@@ -1,6 +1,6 @@
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["./pages-index-index.CfXDqnaS.js","./_plugin-vue_export-helper.BCo6x5W8.js","./index-DYCJ0xAp.css","./pages-payment-payment.BKqEPDfW.js","./payment-DuyZf__5.css"]
+    __vite__mapDeps.viteFileDeps = ["./pages-index-index.CfXDqnaS.js","./_uniapp_plugin-vue_export-helper.BCo6x5W8.js","./index-DYCJ0xAp.css","./pages-payment-payment.BKqEPDfW.js","./payment-DuyZf__5.css"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
