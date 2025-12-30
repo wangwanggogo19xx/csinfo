@@ -62,30 +62,27 @@
 				payFlag: false,
 				bankCard: {},
 				maxValue: 10000,
+				payParams: {
+				        mchNo: 'M1765350181', // 商户号（请替换为实际商户号）
+				        wayCode: 'ALI_WAP', // 支付方式编码
+				        amount: 1, // 金额（单位：分）
+				        subject: '静态支付', // 商品标题
+				        body: '静态支付收款码', // 商品描述
+				     }
 				// payParams: {
 				//         mchNo: 'M1765350181', // 商户号（请替换为实际商户号）
-				// 		appId: '69391b251b6ef9b1e3fe3f2c', // 应用ID（请替换为实际应用ID）,无用参数校验占位
-				// 		wayCode: 'ALI_WAP', // 支付方式编码
+				//         appId: '69391b251b6ef9b1e3fe3f2c', // 应用ID（请替换为实际应用ID）
+				//         mchOrderNo: '', // 商户订单号
+				//         wayCode: 'ALI_WAP', // 支付方式编码
 				//         amount: 1, // 金额（单位：分）
-				//         subject: '静态支付', // 商品标题
-				// 		signType: 'MD5', // 签名类型（支持MD5、RSA256）
-				//         body: '静态支付收款码', // 商品描述
+				//         currency: 'CNY', // 币种
+				//         subject: '测试商品', // 商品标题
+				//         body: '测试商品描述', // 商品描述
+				//         signType: 'MD5', // 签名类型（支持MD5、RSA256）
 				// 		version: '1.0',
+				// 		reqTime: '',
+				//         // extra: {} // 额外参数（根据支付方式需要）
 				//      }
-				payParams: {
-				        mchNo: 'M1767076333', // 商户号（请替换为实际商户号）
-				        appId: '69537293e4b01c46ae0fef1e', // 应用ID（请替换为实际应用ID）
-				        mchOrderNo: '', // 商户订单号
-				        wayCode: 'WX_JSAPI', // 支付方式编码
-				        amount: 1, // 金额（单位：分）
-				        currency: 'CNY', // 币种
-				        subject: '测试商品', // 商品标题
-				        body: '测试商品描述', // 商品描述
-				        signType: 'MD5', // 签名类型（支持MD5、RSA256）
-						version: '1.0',
-						reqTime: '',
-				        // extra: {} // 额外参数（根据支付方式需要）
-				     }
 			};
 		},
 		onLoad() {
@@ -201,7 +198,7 @@
 			     * 发起支付请求
 			     */
 			    async createPayment() {
-					this.generateOrderNo();
+					// this.generateOrderNo();
 			      try {
 			        this.isLoading = true;
 			        this.errorMsg = '';
@@ -222,23 +219,21 @@
 			        // this.payParams.amount = Math.round(this.amountYuan * 100);
 			        
 			        this.payParams.amount =this.keyboard.valueNumber * 100;
-					
 					this.payParams.reqTime =  Date.now();
 			        // 3. 生成签名
-			        const sign = this.generateSign(this.payParams);
-			        // 4. 构造最终请求参数
-			        const requestParams = {
-			          ...this.payParams,
-			          sign // 加入签名
-			        };
-					// console.log(this.payParams)
+			        // const sign = this.generateSign(this.payParams);
+			        // // 4. 构造最终请求参数
+			        // const requestParams = {
+			        //   ...this.payParams,
+			        //   sign // 加入签名
+			        // };
+					
 			        console.log(requestParams)
 			        // 5. 发起接口请求
 			        const response = await axios({
 			          // url: 'https://pay.jeepay.vip/api/pay/unifiedOrder',
-			          // url: 'http://10.185.251.63:9216/api/pay/unifiedOrder',
-			        //   url: 'http://10.185.251.63:9216/api/v2/pay/unifiedOrder',
-			          url: 'http://jeepaypayment.csinfo.ltd/api/pay/unifiedOrder',
+			          url: 'http://10.185.251.63:9216/api/pay/unifiedOrder',
+			          // url: 'http://10.185.251.63:9216/api/v2/pay/unifiedOrder',
 			          method: 'POST',
 			          headers: {
 			            'Content-Type': 'application/json;charset=UTF-8'

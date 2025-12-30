@@ -29,6 +29,12 @@
 			    }
 			  }
 
+		},
+		{
+			"path": "pages/payment2/payment2",
+			"style": {
+				"navigationBarTitleText": ""
+			}
 		}
 	],
 	"globalStyle": {
