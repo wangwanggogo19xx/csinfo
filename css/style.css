@@ -880,3 +880,13 @@ html {
         font-size: 1.5rem;
     }
 }
+
+
+.footer-bottom a {
+    color:#bdc3c7;
+    text-decoration:none;
+}
+.footer-bottom a:hover {
+    color:#ffffff;
+    text-decoration:underline;
+}
